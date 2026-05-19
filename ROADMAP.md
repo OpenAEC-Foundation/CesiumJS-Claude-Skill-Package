@@ -4,42 +4,47 @@
 
 | Phase | Description | Status | Progress |
 |-------|------------|--------|----------|
-| Phase 1 | Raw Masterplan | ✅ Infrastructure Ready | 50% |
-| Phase 2 | Deep Research (Vooronderzoek) | ⏳ Next | 0% |
-| Phase 3 | Masterplan Refinement | ⏳ Pending | 0% |
+| Phase 1 | Raw Masterplan | ✅ Done | 100% |
+| Phase 2 | Deep Research (Vooronderzoek) | ✅ Done | 100% |
+| Phase 3 | Masterplan Refinement | ⏳ Next | 0% |
 | Phase 4 | Topic-Specific Research | ⏳ Pending | 0% |
 | Phase 5 | Skill Creation | ⏳ Pending | 0% |
 | Phase 6 | Validation | ⏳ Pending | 0% |
 | Phase 7 | Publication | ⏳ Pending | 0% |
 
-**Overall Progress**: 7% (infrastructure created, methodology in place)
+**Overall Progress**: 30% (raw masterplan + deep research complete)
 
 ## Next Steps
 
-1. Complete Phase 1: Create raw masterplan in `docs/masterplan/{{TECH_PREFIX}}-masterplan.md`
-   - Define preliminary skill inventory based on technology knowledge
-   - Estimate skill count per category
-   - Identify key API areas to cover
-2. Begin Phase 2: Deep Research
-   - Research CesiumJS comprehensively using SOURCES.md approved URLs
-   - Create `docs/research/vooronderzoek-{{TECH_PREFIX}}.md`
-   - Use WebFetch for latest official documentation
+1. Phase 3: Masterplan refinement
+   - Build Refinement Decisions table (MERGE/DROP/SPLIT/ADD) from vooronderzoek findings
+   - Define batch execution plan (3 skills/batch, core → syntax → impl → errors → agents)
+   - Write complete agent prompts per skill
+   - User checkpoint: present batch + decisions tables, await approval
+2. Phase 4+5: Topic research + skill creation via tmux-orchestration (3 workers)
 
 ## Skill Summary
 
 | Category | Estimated | Created | Validated |
 |----------|-----------|---------|-----------|
-| syntax/ | TBD | 0 | 0 |
-| impl/ | TBD | 0 | 0 |
-| errors/ | TBD | 0 | 0 |
-| core/ | TBD | 0 | 0 |
-| agents/ | TBD | 0 | 0 |
-| **Total** | **TBD** | **0** | **0** |
+| core/ | ~4 | 0 | 0 |
+| syntax/ | ~12 | 0 | 0 |
+| impl/ | ~8 | 0 | 0 |
+| errors/ | ~4 | 0 | 0 |
+| agents/ | ~2 | 0 | 0 |
+| **Total** | **~30** | **0** | **0** |
+
+Final counts set by Phase 3 refinement.
 
 ## Changelog
 
-### Phase 1 — Infrastructure (2026-05-19)
-- Repository structure created
-- Core files initialized (CLAUDE.md, ROADMAP.md, REQUIREMENTS.md, DECISIONS.md, SOURCES.md, WAY_OF_WORK.md, LESSONS.md, CHANGELOG.md)
+### Phase 1 — Infrastructure + Raw Masterplan (2026-05-19 / 2026-05-20)
+- Repository structure created, core files initialized
 - Skill category directories created
-- Ready for raw masterplan creation and deep research
+- Raw masterplan completed: ~30 skills across 5 categories, scope from user brief
+
+### Phase 2 — Deep Research (2026-05-20)
+- 3 parallel opus cluster-agents (rendering / data / ecosystem) → verified fragments
+- Consolidated `docs/research/vooronderzoek-cesium.md` (2000+ words, WebFetch-verified)
+- SOURCES.md updated: 8 sources verified, 4 new sources registered
+- Lessons L-001..L-004 recorded (WebGPU not shipped, async factories mandatory, no routing, parallel research)

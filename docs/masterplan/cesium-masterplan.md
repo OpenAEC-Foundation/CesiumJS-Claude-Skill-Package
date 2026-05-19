@@ -7,7 +7,7 @@
 ## Scope
 
 - Technology : CesiumJS
-- Versions : 1.124+ (WebGL2 default, WebGPU backend in transition)
+- Versions : 1.124+ (WebGL2 only; WebGPU is roadmap-only, NOT shipped : see L-001)
 - Languages : JavaScript, TypeScript
 - Prefix : cesium
 - License : MIT
