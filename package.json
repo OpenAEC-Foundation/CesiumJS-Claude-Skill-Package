@@ -1,0 +1,23 @@
+{
+  "name": "@openaec/cesiumjs-claude-skill-package",
+  "version": "1.0.0",
+  "description": "0 deterministic Claude AI skills for CesiumJS 1.124+",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OpenAEC-Foundation/CesiumJS-Claude-Skill-Package"
+  },
+  "homepage": "https://github.com/OpenAEC-Foundation/CesiumJS-Claude-Skill-Package#readme",
+  "keywords": [
+    "agent-skills",
+    "agentskills",
+    "claude-skills",
+    "claude-code",
+    "cesium",
+    "javascript","typescript",
+    "openaec"
+  ],
+  "agents": {
+    "skills": []
+  }
+}
