@@ -64,3 +64,12 @@ Numbered decisions (D-XXX) with rationale. Immutable once recorded — new decis
 - **Decision**: Publish all skill packages under the OpenAEC Foundation GitHub organization.
 - **Rationale**: Centralized, consistent branding. Community ownership. Discoverability.
 - **Consequence**: All repos follow OpenAEC naming conventions and include social preview banners with OpenAEC branding.
+
+---
+
+## D-008: 30 Skills Across 5 Standard Categories
+
+- **Date**: 2026-05-20
+- **Decision**: The CesiumJS package contains exactly 30 skills organized in the 5 standard categories (core 5, syntax 12, impl 7, errors 4, agents 2). No extra `tiles` or `geospatial` category is created.
+- **Rationale**: 30 skills fits comfortably in the standard core → syntax → impl → errors → agents dependency chain. Extra categories are reserved for packages exceeding 60 skills (Frappe pattern, BOOTSTRAP-RUNBOOK §5.2). 3D Tiles depth is handled by splitting into a syntax skill (loading, formats) and an impl skill (styling, clipping).
+- **Consequence**: Skill naming stays `cesium-{core|syntax|impl|errors|agents}-{topic}`. The full inventory and refinement decisions (D-01..D-07) live in `docs/masterplan/cesium-masterplan.md`.
