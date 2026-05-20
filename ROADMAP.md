@@ -1,6 +1,6 @@
 # ROADMAP — CesiumJS Skill Package
 
-## Current Status
+## Status : COMPLETE — v1.0.0 published
 
 | Phase | Description | Status | Progress |
 |-------|------------|--------|----------|
@@ -9,20 +9,10 @@
 | Phase 3 | Masterplan Refinement | ✅ Done | 100% |
 | Phase 4 | Topic-Specific Research | ✅ Skipped (D-009) | 100% |
 | Phase 5 | Skill Creation | ✅ Done | 100% |
-| Phase 6 | Validation | ⏳ Not started | 0% |
-| Phase 7 | Publication | ⏳ Not started | 0% |
+| Phase 6 | Validation | ✅ Done | 100% |
+| Phase 7 | Publication | ✅ Done | 100% |
 
-**Overall Progress**: 71% (30/30 skills built and committed locally; Phase 6-7 pending)
-
-This session stopped after Phase 5 per user instruction. No `git push` was performed.
-
-## Next Steps
-
-1. Phase 6: Validation + audit
-   - Full validation suite + `generate-audit-report.js`
-   - Compliance audit (P-010), functional sample-test per category
-2. Phase 6.5: Discovery manifests (package.json agents.skills[], agents/openai.yaml), INDEX.md, Keywords polish
-3. Phase 7: Publication (README, social preview banner, GitHub remote, v1.0.0 release)
+**Overall Progress**: 100% — 30 skills, v1.0.0 released.
 
 ## Skill Summary
 
@@ -35,7 +25,8 @@ This session stopped after Phase 5 per user instruction. No `git push` was perfo
 | agents/ | 2 | 2 | 2 |
 | **Total** | **30** | **30** | **30** |
 
-All 30 SKILL.md pass validate-frontmatter, validate-language, validate-emdash, validate-line-count; structure validation passes; every skill has methods.md + examples.md + anti-patterns.md.
+Compliance audit: 100%. All validators pass. Every skill has SKILL.md plus
+methods.md, examples.md, anti-patterns.md.
 
 ## Changelog
 
@@ -54,5 +45,16 @@ All 30 SKILL.md pass validate-frontmatter, validate-language, validate-emdash, v
 ### Phase 5 — Skill Creation (2026-05-20)
 - tmux-orchestration: 3 workers (cesium-w1/2/3), 10 batches, quality gate per batch
 - D-009 (skip topic-research), D-010 (orchestrator commits) recorded
-- Batches 1-9 via workers; batch 10 built by the orchestrator after workers w1/w3 hit the account session limit (L-005)
-- 30/30 skills committed locally across 10 `feat(phase-5)` commits
+- Batch 10 built by the orchestrator after workers hit the account session limit (L-005, L-006)
+- 30/30 skills committed
+
+### Phase 6 — Validation (2026-05-20)
+- Full validator suite passes; compliance audit 100%
+- `docs/validation/audit-report.md` and `functional-test.md`
+
+### Phase 6.5 — Discovery (2026-05-20)
+- `package.json` `agents.skills[]` (30 entries), `agents/openai.yaml`, `INDEX.md`
+
+### Phase 7 — Publication (2026-05-20)
+- README finalized, social preview banner rendered (1280x640)
+- CHANGELOG [1.0.0], GitHub repo, v1.0.0 tag and release, topics set

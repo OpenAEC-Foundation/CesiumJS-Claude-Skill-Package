@@ -1,47 +1,52 @@
 # CesiumJS : Claude Skill Package
 
 <p align="center">
-  <img src="docs/social-preview.png" alt="0 Deterministic Skills for CesiumJS" width="100%">
+  <img src="docs/social-preview.png" alt="30 Deterministic Skills for CesiumJS" width="100%">
 </p>
 
 ![Claude Code Ready](https://img.shields.io/badge/Claude_Code-Ready-blue?style=flat-square)
 ![CesiumJS](https://img.shields.io/badge/CesiumJS-1.124+-0A66C2?style=flat-square)
-![Skills](https://img.shields.io/badge/Skills-0-green?style=flat-square)
+![Skills](https://img.shields.io/badge/Skills-30-green?style=flat-square)
 ![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)
 ![Agent Skills](https://img.shields.io/badge/agent--skills-compatible-purple?style=flat-square)
 
-**0 deterministic Claude AI skills for CesiumJS. Deterministic Claude skills for CesiumJS : WebGL geospatial 3D platform, 3D Tiles, glTF, KML/CZML/CityGML, Resium, digital twin, AEC geo-BIM**
+**30 deterministic Claude AI skills for CesiumJS : the WebGL geospatial 3D platform. Covers Viewer and Scene architecture, 3D Tiles, glTF models, imagery and terrain providers, KML/CZML/GeoJSON data sources, Resium, Cesium ion, digital-twin and AEC geo-BIM workflows.**
 
 Built on the [Agent Skills](https://agentskills.org) open standard. Discoverable via npm-agentskills manifest and OpenAI Codex skill discovery.
 
 ## Why This Exists
 
-Without skills, Claude lacks deterministic guidance for CesiumJS patterns:
+Without skills, Claude reaches for outdated CesiumJS patterns from pre-2023 training data. The synchronous tileset constructor and `readyPromise` were removed in CesiumJS 1.107, so that code throws on any 1.124+ target:
 
-```{{LANGUAGE}}
-// Wrong : {{WRONG_PATTERN_DESCRIPTION}}
-{{WRONG_CODE_EXAMPLE}}
+```js
+// Wrong : the url constructor option and readyPromise were removed in 1.107
+const tileset = new Cesium.Cesium3DTileset({
+  url: Cesium.IonResource.fromAssetId(69380),
+});
+tileset.readyPromise.then(() => viewer.zoomTo(tileset));
 ```
 
-With this skill package, Claude produces correct patterns:
+With this skill package, Claude produces the modern async-factory pattern:
 
-```{{LANGUAGE}}
-// Correct : {{CORRECT_PATTERN_DESCRIPTION}}
-{{CORRECT_CODE_EXAMPLE}}
+```js
+// Correct : async factory; await replaces the readyPromise chain entirely
+const tileset = await Cesium.Cesium3DTileset.fromIonAssetId(69380);
+viewer.scene.primitives.add(tileset);
+await viewer.zoomTo(tileset);
 ```
 
 ## What's Inside
 
 | Category | Count | Purpose |
 |----------|:-----:|---------|
-| **core/** | 0 | Architecture, cross-cutting concerns |
-| **syntax/** | 0 | API syntax, code patterns, signatures |
-| **impl/** | 0 | Step-by-step development workflows |
-| **errors/** | 0 | Error handling, debugging, anti-patterns |
-| **agents/** | 0 | Validation, code generation, orchestration |
-| **Total** | **0** | |
+| **core/** | 5 | Architecture, cross-cutting concerns |
+| **syntax/** | 12 | API syntax, code patterns, signatures |
+| **impl/** | 7 | Step-by-step development workflows |
+| **errors/** | 4 | Error handling, debugging, anti-patterns |
+| **agents/** | 2 | Validation, orchestration |
+| **Total** | **30** | |
 
-See [INDEX.md](INDEX.md) for the complete skill catalog with descriptions and dependency graph.
+See [INDEX.md](INDEX.md) for the complete skill catalog with descriptions and the dependency flow.
 
 ## Installation
 
@@ -82,19 +87,20 @@ cesium-{category}-{topic}/
     └── anti-patterns.md  # What NOT to do (with explanations)
 ```
 
-YAML frontmatter uses folded scalar `>`, "Use when..." opener, and a `Keywords:` line with technical + symptom-based + plain-language terms for maximum discoverability.
+YAML frontmatter uses folded scalar `>`, a "Use when..." opener, and a `Keywords:` line with technical, symptom-based, and plain-language terms for maximum discoverability.
 
 ## Quality Guarantees
 
 - **Deterministic language** : ALWAYS / NEVER, no "you might consider"
-- **Version-explicit code** : every example annotated with applicable versions
-- **WebFetch-verified** : all code-snippets validated against official docs
+- **WebGL2-only** : CesiumJS 1.124+ renders on WebGL2; no WebGPU path is assumed
+- **Async-factory correct** : no removed `readyPromise`, `new Cesium3DTileset`, `ModelExperimental`, or `defaultValue`
+- **WebFetch-verified** : all code snippets validated against official docs
 - **CI/CD validated** : frontmatter, line count, structure, language, em-dash checks on every push
-- **Compliance audit** : score >= 90% required for releases
+- **Compliance audit** : 100% on the Phase 6 audit
 
 ## Companion Skills : Cross-Technology Integration
 
-For projects combining CesiumJS with other AEC technologies, see [Cross-Tech-AEC-Claude-Skill-Package](https://github.com/OpenAEC-Foundation/Cross-Tech-AEC-Claude-Skill-Package).
+For projects combining CesiumJS with other AEC technologies, see [Cross-Tech-AEC-Claude-Skill-Package](https://github.com/OpenAEC-Foundation/Cross-Tech-AEC-Claude-Skill-Package). CesiumJS commonly pairs with QGIS (geo data), ThatOpen and IfcOpenShell (BIM to glTF), and Speckle (data federation); the `cesium-impl-aec-georef` skill covers the georeferencing boundary.
 
 ## Related Skill Packages (OpenAEC Foundation)
 
@@ -104,7 +110,7 @@ For projects combining CesiumJS with other AEC technologies, see [Cross-Tech-AEC
 | Frappe | 61 | [Link](https://github.com/OpenAEC-Foundation/Frappe_Claude_Skill_Package) |
 | Speckle | 25 | [Link](https://github.com/OpenAEC-Foundation/Speckle-Claude-Skill-Package) |
 
-See full list at [OpenAEC-Foundation](https://github.com/OpenAEC-Foundation).
+See the full list at [OpenAEC-Foundation](https://github.com/OpenAEC-Foundation).
 
 ## License
 

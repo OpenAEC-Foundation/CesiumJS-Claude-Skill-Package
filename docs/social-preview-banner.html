@@ -10,7 +10,7 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    background: {{BG_COLOR}};
+    background: #0C1A2B;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -20,7 +20,7 @@
   .banner {
     width: 1280px;
     height: 640px;
-    background: {{BG_COLOR}};
+    background: #0C1A2B;
     position: relative;
     overflow: hidden;
     display: flex;
@@ -33,7 +33,7 @@
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, {{BRAND_PRIMARY}} 0%, {{BRAND_SECONDARY}} 50%, {{BRAND_ACCENT}} 100%);
+    background: linear-gradient(90deg, #4AA3DF 0%, #6FCF97 50%, #F2C14E 100%);
   }
 
   /* Subtle blueprint grid */
@@ -73,7 +73,7 @@
     font-family: 'Space Grotesk', system-ui, sans-serif;
     font-size: 26px;
     font-weight: 700;
-    color: {{BRAND_PRIMARY}};
+    color: #4AA3DF;
     letter-spacing: 4px;
     text-transform: uppercase;
     margin-bottom: 22px;
@@ -106,9 +106,9 @@
     border: 2px solid;
   }
 
-  .badge-1 { border-color: {{BRAND_PRIMARY}};   color: {{BRAND_PRIMARY}}; }
-  .badge-2 { border-color: {{BRAND_SECONDARY}}; color: {{BRAND_SECONDARY}}; }
-  .badge-3 { border-color: {{BRAND_ACCENT}};    color: {{BRAND_ACCENT}}; }
+  .badge-1 { border-color: #4AA3DF;   color: #4AA3DF; }
+  .badge-2 { border-color: #6FCF97; color: #6FCF97; }
+  .badge-3 { border-color: #F2C14E;    color: #F2C14E; }
 
   .versions {
     font-family: 'JetBrains Mono', monospace;
@@ -181,16 +181,16 @@
   }
 
   .comment  { color: #A1A1AA; }
-  .keyword  { color: {{BRAND_PRIMARY}}; }
-  .function { color: {{BRAND_SECONDARY}}; }
+  .keyword  { color: #4AA3DF; }
+  .function { color: #6FCF97; }
   .string   { color: #34D399; }
-  .operator { color: {{BRAND_ACCENT}}; }
+  .operator { color: #F2C14E; }
   .type     { color: #3178C6; }
   .cursor {
     display: inline-block;
     width: 8px;
     height: 17px;
-    background: {{BRAND_PRIMARY}};
+    background: #4AA3DF;
     vertical-align: text-bottom;
   }
 
@@ -211,7 +211,7 @@
   }
 
   .foundation-name .open { color: #FAFAF9; }
-  .foundation-name .aec  { color: {{BRAND_PRIMARY}}; }
+  .foundation-name .aec  { color: #4AA3DF; }
 
   .foundation-sub {
     font-family: 'Inter', system-ui, sans-serif;
@@ -228,18 +228,18 @@
 
     <!-- Left: text content -->
     <div class="left">
-      <div class="number">0</div>
+      <div class="number">30</div>
       <div class="title">Deterministic Skills</div>
-      <div class="subtitle">for {{TECH_TAGLINE}}</div>
+      <div class="subtitle">for CesiumJS : the WebGL geospatial 3D platform</div>
 
       <div class="badges">
-        <div class="badge badge-1">{{BADGE_1}}</div>
-        <div class="badge badge-2">{{BADGE_2}}</div>
-        <div class="badge badge-3">{{BADGE_3}}</div>
+        <div class="badge badge-1">3D Tiles</div>
+        <div class="badge badge-2">glTF Models</div>
+        <div class="badge badge-3">Cesium ion</div>
       </div>
 
       <div class="versions">
-        {{VERSION_LINE}}
+        CesiumJS 1.124+ <span class="sep">&#9474;</span> WebGL2 <span class="sep">&#9474;</span> 5 categories <span class="sep">&#9474;</span> MIT
       </div>
     </div>
 
@@ -250,11 +250,15 @@
           <div class="dot dot-red"></div>
           <div class="dot dot-yellow"></div>
           <div class="dot dot-green"></div>
-          <span class="code-filename">{{CODE_FILENAME}}</span>
+          <span class="code-filename">viewer.js</span>
         </div>
         <div class="code-body">
-          {{CODE_BODY}}
-          <span class="cursor"></span>
+          <span class="comment">// Async factory : the modern CesiumJS pattern</span><br>
+          <span class="keyword">const</span> tileset <span class="operator">=</span> <span class="keyword">await</span> Cesium.<span class="type">Cesium3DTileset</span>.<span class="function">fromIonAssetId</span>(<span class="string">69380</span>);<br>
+          viewer.scene.primitives.<span class="function">add</span>(tileset);<br>
+          <span class="keyword">await</span> viewer.<span class="function">zoomTo</span>(tileset);<br>
+          <br>
+          <span class="comment">// NEVER : readyPromise, removed in 1.107</span>
         </div>
       </div>
     </div>
@@ -267,29 +271,3 @@
   </div>
 </body>
 </html>
-
-<!--
-TEMPLATE VARIABLES:
-==================
-{{BG_COLOR}}         — Background color (e.g., #1A1A2E, #2A2A32)
-{{BRAND_PRIMARY}}    — Primary brand color (e.g., #61DAFB for React, #FFC131 for Tauri)
-{{BRAND_SECONDARY}}  — Secondary color (e.g., #3178C6 for TypeScript)
-{{BRAND_ACCENT}}     — Accent color (e.g., #A855F7 for purple)
-0      — Number of skills (e.g., 24, 27)
-{{TECH_TAGLINE}}     — Short tagline (e.g., "expert-level React 18 & 19 development")
-{{BADGE_1}}          — First badge text (e.g., "React 18 + 19")
-{{BADGE_2}}          — Second badge text (e.g., "TypeScript")
-{{BADGE_3}}          — Third badge text (e.g., "18 Hooks")
-{{VERSION_LINE}}     — Version info with HTML separators using <span class="sep">│</span>
-{{CODE_FILENAME}}    — Filename in code window titlebar (e.g., "App.tsx", "lib.rs")
-{{CODE_BODY}}        — HTML-formatted code snippet using span classes: .comment, .keyword, .function, .string, .operator, .type
-
-BRAND COLOR REFERENCE:
-====================
-React:    #61DAFB (cyan), #3178C6 (blue), #A855F7 (purple), bg: #1A1A2E
-Tauri:    #FFC131 (gold), #FF8C00 (orange), #24C8DB (cyan), bg: #2A2A32
-Docker:   #2496ED (blue), #1D63ED (dark blue), #34D399 (green), bg: #1A1A2E
-Vite:     #646CFF (purple), #FFC131 (yellow), #41D1FF (cyan), bg: #1A1A2E
-Next.js:  #FAFAF9 (white), #A1A1AA (gray), #0070F3 (blue), bg: #000000
-SolidJS:  #2C4F7C (blue), #335D92 (light blue), #446B9E (lightest), bg: #1A1A2E
--->
