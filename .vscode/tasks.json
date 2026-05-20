@@ -2,9 +2,9 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "tmo:worker-1",
+      "label": "tmo:cesium-w1",
       "type": "shell",
-      "command": "tmux new-session -A -s worker-1 -c ${workspaceFolder} 'TMO_SESSION=worker-1 TMO_STATE_DIR=${workspaceFolder}/state claude'",
+      "command": "tmux new-session -A -s cesium-w1 -c ${workspaceFolder} 'TMO_SESSION=cesium-w1 TMO_STATE_DIR=${workspaceFolder}/state claude'",
       "presentation": {
         "panel": "dedicated",
         "group": "tmo-workers"
@@ -12,9 +12,9 @@
       "problemMatcher": []
     },
     {
-      "label": "tmo:worker-2",
+      "label": "tmo:cesium-w2",
       "type": "shell",
-      "command": "tmux new-session -A -s worker-2 -c ${workspaceFolder} 'TMO_SESSION=worker-2 TMO_STATE_DIR=${workspaceFolder}/state claude'",
+      "command": "tmux new-session -A -s cesium-w2 -c ${workspaceFolder} 'TMO_SESSION=cesium-w2 TMO_STATE_DIR=${workspaceFolder}/state claude'",
       "presentation": {
         "panel": "dedicated",
         "group": "tmo-workers"
@@ -22,9 +22,9 @@
       "problemMatcher": []
     },
     {
-      "label": "tmo:worker-3",
+      "label": "tmo:cesium-w3",
       "type": "shell",
-      "command": "tmux new-session -A -s worker-3 -c ${workspaceFolder} 'TMO_SESSION=worker-3 TMO_STATE_DIR=${workspaceFolder}/state claude'",
+      "command": "tmux new-session -A -s cesium-w3 -c ${workspaceFolder} 'TMO_SESSION=cesium-w3 TMO_STATE_DIR=${workspaceFolder}/state claude'",
       "presentation": {
         "panel": "dedicated",
         "group": "tmo-workers"
@@ -33,7 +33,7 @@
     },
     {
       "label": "tmo:start-all",
-      "dependsOn": ["tmo:worker-1", "tmo:worker-2", "tmo:worker-3"],
+      "dependsOn": ["tmo:cesium-w1", "tmo:cesium-w2", "tmo:cesium-w3"],
       "dependsOrder": "parallel",
       "runOptions": {
         "runOn": "folderOpen"

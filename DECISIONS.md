@@ -73,3 +73,21 @@ Numbered decisions (D-XXX) with rationale. Immutable once recorded — new decis
 - **Decision**: The CesiumJS package contains exactly 30 skills organized in the 5 standard categories (core 5, syntax 12, impl 7, errors 4, agents 2). No extra `tiles` or `geospatial` category is created.
 - **Rationale**: 30 skills fits comfortably in the standard core → syntax → impl → errors → agents dependency chain. Extra categories are reserved for packages exceeding 60 skills (Frappe pattern, BOOTSTRAP-RUNBOOK §5.2). 3D Tiles depth is handled by splitting into a syntax skill (loading, formats) and an impl skill (styling, clipping).
 - **Consequence**: Skill naming stays `cesium-{core|syntax|impl|errors|agents}-{topic}`. The full inventory and refinement decisions (D-01..D-07) live in `docs/masterplan/cesium-masterplan.md`.
+
+---
+
+## D-009: Skip Per-Skill Topic Research (Phase 4)
+
+- **Date**: 2026-05-20
+- **Decision**: Phase 4 per-skill topic research is skipped. Skill-builder workers reference `docs/research/vooronderzoek-cesium.md` plus the relevant `docs/research/fragments/cluster-{A,B,C}-*.md` directly.
+- **Rationale**: The vooronderzoek (2110 words) plus three WebFetch-verified research fragments (~4300 words) already cover the full CesiumJS API surface with verified API names and version annotations. The skill-builder role additionally WebFetches every code snippet against SOURCES.md. Per-skill topic research would be a redundant third verification layer. This matches the Docker L-001 skip-pattern (BOOTSTRAP-RUNBOOK §6.3).
+- **Consequence**: Worker bundles point to vooronderzoek + fragments, not to `docs/research/topic-research/`. That directory stays empty.
+
+---
+
+## D-010: Orchestrator Commits, Workers Do Not
+
+- **Date**: 2026-05-20
+- **Decision**: Skill-builder workers NEVER run `git add` / `git commit` / `git push`. The orchestrator commits each batch after the quality gate passes.
+- **Rationale**: Three workers running `git commit` concurrently in the same repository race on the `.git/index.lock` file, causing intermittent commit failures. Root-cause fix: a single committer (the orchestrator) serializes all commits. Aligns with the no-fallback principle (fix the responsibility at one place).
+- **Consequence**: The `skill-builder` role definition forbids git commands. Per-batch commits are `feat(phase-5): batch-N skills [...]`.
