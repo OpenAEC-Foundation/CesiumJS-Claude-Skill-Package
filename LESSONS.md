@@ -37,3 +37,21 @@ Observations and findings captured during skill package development.
 - **Phase** : 2 (deep research)
 - **Finding** : BOOTSTRAP-RUNBOOK §4 prescribes 1 research agent for single-tech packages. CesiumJS API surface is broad enough (rendering + data + ecosystem) that 3 parallel cluster-agents, each writing an isolated fragment file, produced verified research faster with no file conflicts. Main session consolidated.
 - **Action** : Workflow-level insight for the Workflow Template: allow parallel cluster-research when a single-tech API surface is comparable in breadth to a multi-tech package.
+
+---
+
+## L-005 : Account session-limit under parallel tmux-orchestration
+
+- **Date** : 2026-05-20
+- **Phase** : 5 (skill creation)
+- **Finding** : Two tmux worker sessions (cesium-w1, cesium-w3) hit the Claude account session-limit during batch 9 (reset 6am Amsterdam). The machine was running multiple skill-package orchestrations concurrently (PostgreSQL, IFC, CesiumJS), so 6+ worker-claude REPLs plus orchestrators shared one account quota. The limit is account-wide, so respawning workers does not recover it.
+- **Action** : The orchestrator built the final batch (batch 10, 3 skills) directly instead of waiting ~3 hours for the limit to reset. Workflow-level lesson for the Workflow Template: when running tmux-orchestration alongside other orchestrations on the same account, expect the session-limit; the orchestrator completing a stalled batch directly is a valid no-stall recovery, and worker session names must be package-prefixed (cesium-w*) to avoid hijacking another orchestration's generic worker-N sessions.
+
+---
+
+## L-006 : Two-step Enter unreliable for large pasted bundles
+
+- **Date** : 2026-05-20
+- **Phase** : 5 (skill creation)
+- **Finding** : Injecting a worker context bundle via `tmux load-buffer` + `paste-buffer` leaves the paste collapsed in the claude REPL input ("paste again to expand"); a single follow-up Enter often does not submit it. Two spaced Enter key-sends (0.5s apart) reliably submit. Extra Enters on an already-submitted prompt are harmless no-ops.
+- **Action** : The injection helper sends paste, then two `send-keys Enter` calls with a 0.5s gap. Recorded for the tmux-orchestration skill.
