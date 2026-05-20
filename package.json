@@ -1,7 +1,7 @@
 {
   "name": "@openaec/cesiumjs-claude-skill-package",
   "version": "1.0.0",
-  "description": "0 deterministic Claude AI skills for CesiumJS 1.124+",
+  "description": "30 deterministic Claude AI skills for CesiumJS 1.124+",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -14,10 +14,132 @@
     "claude-skills",
     "claude-code",
     "cesium",
-    "javascript","typescript",
+    "javascript",
+    "typescript",
     "openaec"
   ],
   "agents": {
-    "skills": []
+    "skills": [
+      {
+        "name": "cesium-agents-scene-architect",
+        "path": "./skills/source/cesium-agents/cesium-agents-scene-architect"
+      },
+      {
+        "name": "cesium-agents-skill-validator",
+        "path": "./skills/source/cesium-agents/cesium-agents-skill-validator"
+      },
+      {
+        "name": "cesium-core-architecture",
+        "path": "./skills/source/cesium-core/cesium-core-architecture"
+      },
+      {
+        "name": "cesium-core-coordinates",
+        "path": "./skills/source/cesium-core/cesium-core-coordinates"
+      },
+      {
+        "name": "cesium-core-memory",
+        "path": "./skills/source/cesium-core/cesium-core-memory"
+      },
+      {
+        "name": "cesium-core-performance",
+        "path": "./skills/source/cesium-core/cesium-core-performance"
+      },
+      {
+        "name": "cesium-core-versioning",
+        "path": "./skills/source/cesium-core/cesium-core-versioning"
+      },
+      {
+        "name": "cesium-errors-coordinates",
+        "path": "./skills/source/cesium-errors/cesium-errors-coordinates"
+      },
+      {
+        "name": "cesium-errors-memory",
+        "path": "./skills/source/cesium-errors/cesium-errors-memory"
+      },
+      {
+        "name": "cesium-errors-rendering",
+        "path": "./skills/source/cesium-errors/cesium-errors-rendering"
+      },
+      {
+        "name": "cesium-errors-tileset",
+        "path": "./skills/source/cesium-errors/cesium-errors-tileset"
+      },
+      {
+        "name": "cesium-impl-3d-tiles-styling",
+        "path": "./skills/source/cesium-impl/cesium-impl-3d-tiles-styling"
+      },
+      {
+        "name": "cesium-impl-aec-georef",
+        "path": "./skills/source/cesium-impl/cesium-impl-aec-georef"
+      },
+      {
+        "name": "cesium-impl-build-deploy",
+        "path": "./skills/source/cesium-impl/cesium-impl-build-deploy"
+      },
+      {
+        "name": "cesium-impl-cesium-ion",
+        "path": "./skills/source/cesium-impl/cesium-impl-cesium-ion"
+      },
+      {
+        "name": "cesium-impl-geocoding",
+        "path": "./skills/source/cesium-impl/cesium-impl-geocoding"
+      },
+      {
+        "name": "cesium-impl-picking-measurement",
+        "path": "./skills/source/cesium-impl/cesium-impl-picking-measurement"
+      },
+      {
+        "name": "cesium-impl-resium",
+        "path": "./skills/source/cesium-impl/cesium-impl-resium"
+      },
+      {
+        "name": "cesium-syntax-3d-tiles",
+        "path": "./skills/source/cesium-syntax/cesium-syntax-3d-tiles"
+      },
+      {
+        "name": "cesium-syntax-atmosphere",
+        "path": "./skills/source/cesium-syntax/cesium-syntax-atmosphere"
+      },
+      {
+        "name": "cesium-syntax-camera",
+        "path": "./skills/source/cesium-syntax/cesium-syntax-camera"
+      },
+      {
+        "name": "cesium-syntax-datasources",
+        "path": "./skills/source/cesium-syntax/cesium-syntax-datasources"
+      },
+      {
+        "name": "cesium-syntax-entity",
+        "path": "./skills/source/cesium-syntax/cesium-syntax-entity"
+      },
+      {
+        "name": "cesium-syntax-gltf-model",
+        "path": "./skills/source/cesium-syntax/cesium-syntax-gltf-model"
+      },
+      {
+        "name": "cesium-syntax-imagery",
+        "path": "./skills/source/cesium-syntax/cesium-syntax-imagery"
+      },
+      {
+        "name": "cesium-syntax-materials",
+        "path": "./skills/source/cesium-syntax/cesium-syntax-materials"
+      },
+      {
+        "name": "cesium-syntax-primitive",
+        "path": "./skills/source/cesium-syntax/cesium-syntax-primitive"
+      },
+      {
+        "name": "cesium-syntax-terrain",
+        "path": "./skills/source/cesium-syntax/cesium-syntax-terrain"
+      },
+      {
+        "name": "cesium-syntax-time",
+        "path": "./skills/source/cesium-syntax/cesium-syntax-time"
+      },
+      {
+        "name": "cesium-syntax-viewer",
+        "path": "./skills/source/cesium-syntax/cesium-syntax-viewer"
+      }
+    ]
   }
 }
